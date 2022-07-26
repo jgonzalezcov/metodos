@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 id="title_web">Todo List</h1>
+      </header>
+      <main>
+        <section class="abstract">
+          <div class="state_container">
+            <div class="state">
+              <div class="total">
+                <h3>Total:</h3>
+                <h3 class="number_reg"></h3>
+              </div>
+              <div class="completed">
+                <h3>Realizadas:</h3>
+                <h3 class="number_ok"></h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="input_section">
+          <h3>Nueva Tarea</h3>
+          <input class="new_task" type="text" />
+          <button>Agregar</button>
+        </section>
+        <section class="section_reg">
+          <table class="table_head">
+            <tr>
+              <th class="title_id title_list">Id</th>
+              <th class="title_task title_list">Tarea</th>
+              <th class="title_ok title_list">OK</th>
+              <th class="title_del title_list">DEL</th>
+            </tr>
+          </table>
+          <div class="scroll-container">
+            <table class="table_body"></table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="assets/js/index.js" type="module"></script>
+  </body>
+</html>
