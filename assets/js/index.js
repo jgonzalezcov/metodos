@@ -17,7 +17,7 @@ const printHtml = function (idPrint, taskPrint, statusPrint) {
   <td class="task_id task_list">${idPrint}</td>
   <td class="task_task task_list">${taskPrint}</td>
   <td class="task_ok task_list">
-    <input class = "check_ok" id="c${idPrint}" type="checkbox" id="cbox" value="True" ${statusPrint}/>
+    <input class = "check_ok" id="c${idPrint}" type="checkbox" id="cbox" value="true" ${statusPrint}/>
   </td>
   <td class="title_del task_list">
     <img  id="${idPrint}"
@@ -69,7 +69,7 @@ const enterTask = function () {
     return
     //Ingresa nueva tarea
   } else {
-    task_records.push({ id: maxId, task: newTask.value, state: 'FALSE' })
+    task_records.push({ id: maxId, task: newTask.value, state: false })
     //Resetea el elemento tarea
     newTask.value = ''
     setview()
@@ -89,20 +89,25 @@ const listenTask = function () {
     })
   })
 }
-/*************************************Buscar y escuchar checkbox para marcar que se realizo*******************************************/
+/*************************************Buscar, escuchar el checkbox y cambia el estado de la tarea**********************************/
 const listenTask_ok = function () {
   document.querySelectorAll('.check_ok').forEach((item) => {
     item.addEventListener('click', (e) => {
+      let numberId = Number(e.target.id.slice(1))
+      const indexTask = task_records.findIndex(
+        (tasItems) => tasItems.id == numberId
+      )
       if (e.target.checked) {
-        task_records[Number(e.target.id.slice(1) - 1)].state = true
+        task_records[indexTask].state = true
       } else {
-        task_records[Number(e.target.id.slice(1) - 1)].state = false
+        task_records[indexTask].state = false
       }
       console.log(task_records)
       cuentaOK()
     })
   })
 }
+
 /************************************************Elimina registros*******************************************/
 function delete_task(id_listen) {
   const indexTask = task_records.findIndex(
